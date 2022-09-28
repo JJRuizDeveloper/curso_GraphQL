@@ -1,0 +1,20 @@
+{
+  "name": "01_hellograph",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.training.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@graphql-tools/schema": "^9.0.4",
+    "apollo-server": "^3.10.2",
+    "graphql": "^16.6.0",
+    "graphql-scalars": "^1.18.0"
+  },
+  "type": "module"
+}

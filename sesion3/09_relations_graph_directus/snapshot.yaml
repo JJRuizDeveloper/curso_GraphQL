@@ -1,0 +1,711 @@
+version: 1
+directus: 9.18.1
+collections:
+  - collection: authors
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: authors
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: authors
+      sql: >-
+        CREATE TABLE `authors` (`id` integer not null primary key autoincrement,
+        `name` varchar(255) null default null)
+  - collection: books
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: books
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: books
+      sql: >-
+        CREATE TABLE "books" (`author` integer NULL DEFAULT null, `id` integer
+        PRIMARY KEY AUTOINCREMENT NOT NULL, `title` varchar(255) NULL DEFAULT
+        null, CONSTRAINT `books_author_foreign` FOREIGN KEY (`author`)
+        REFERENCES `authors` (`id`) ON DELETE SET NULL)
+  - collection: forums
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: forums
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: forums
+      sql: >-
+        CREATE TABLE `forums` (`id` integer not null primary key autoincrement,
+        `name` varchar(255) null default null)
+  - collection: reviews
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: reviews
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      name: reviews
+      sql: >-
+        CREATE TABLE "reviews" (`book` integer NULL DEFAULT null, `comment` text
+        NULL DEFAULT null, `forum` integer NULL DEFAULT null, `id` integer
+        PRIMARY KEY AUTOINCREMENT NOT NULL, `text` text NULL DEFAULT null,
+        CONSTRAINT `reviews_book_foreign` FOREIGN KEY (`book`) REFERENCES
+        `books` (`id`) ON DELETE SET NULL, CONSTRAINT `reviews_forum_foreign`
+        FOREIGN KEY (`forum`) REFERENCES `forums` (`id`) ON DELETE SET NULL)
+fields:
+  - collection: authors
+    field: books
+    meta:
+      collection: authors
+      conditions: null
+      display: null
+      display_options: null
+      field: books
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: authors
+    field: id
+    meta:
+      collection: authors
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: false
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      table: authors
+    type: integer
+  - collection: authors
+    field: name
+    meta:
+      collection: authors
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      data_type: varchar
+      default_value: null
+      foreign_key_column: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      table: authors
+    type: string
+  - collection: books
+    field: author
+    meta:
+      collection: books
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{name}}'
+      field: author
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{name}}'
+      readonly: false
+      required: true
+      sort: null
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      data_type: integer
+      default_value: null
+      foreign_key_column: id
+      foreign_key_table: authors
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: author
+      numeric_precision: null
+      numeric_scale: null
+      table: books
+    type: integer
+  - collection: books
+    field: id
+    meta:
+      collection: books
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: false
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      table: books
+    type: integer
+  - collection: books
+    field: reviews
+    meta:
+      collection: books
+      conditions: null
+      display: null
+      display_options: null
+      field: reviews
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: books
+    field: title
+    meta:
+      collection: books
+      conditions: null
+      display: null
+      display_options: null
+      field: title
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      data_type: varchar
+      default_value: null
+      foreign_key_column: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: title
+      numeric_precision: null
+      numeric_scale: null
+      table: books
+    type: string
+  - collection: forums
+    field: id
+    meta:
+      collection: forums
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: false
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      table: forums
+    type: integer
+  - collection: forums
+    field: name
+    meta:
+      collection: forums
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      data_type: varchar
+      default_value: null
+      foreign_key_column: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      table: forums
+    type: string
+  - collection: forums
+    field: reviews
+    meta:
+      collection: forums
+      conditions: null
+      display: null
+      display_options: null
+      field: reviews
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: reviews
+    field: book
+    meta:
+      collection: reviews
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{title}}'
+      field: book
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{title}}'
+      readonly: false
+      required: true
+      sort: null
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      data_type: integer
+      default_value: null
+      foreign_key_column: id
+      foreign_key_table: books
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: book
+      numeric_precision: null
+      numeric_scale: null
+      table: reviews
+    type: integer
+  - collection: reviews
+    field: comment
+    meta:
+      collection: reviews
+      conditions: null
+      display: null
+      display_options: null
+      field: comment
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: comment
+      numeric_precision: null
+      numeric_scale: null
+      table: reviews
+    type: text
+  - collection: reviews
+    field: forum
+    meta:
+      collection: reviews
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{name}}'
+      field: forum
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{name}}'
+      readonly: false
+      required: true
+      sort: null
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      data_type: integer
+      default_value: null
+      foreign_key_column: id
+      foreign_key_table: forums
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: forum
+      numeric_precision: null
+      numeric_scale: null
+      table: reviews
+    type: integer
+  - collection: reviews
+    field: id
+    meta:
+      collection: reviews
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: false
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      table: reviews
+    type: integer
+  - collection: reviews
+    field: text
+    meta:
+      collection: reviews
+      conditions: null
+      display: null
+      display_options: null
+      field: text
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: text
+      numeric_precision: null
+      numeric_scale: null
+      table: reviews
+    type: text
+relations:
+  - collection: books
+    field: author
+    meta:
+      junction_field: null
+      many_collection: books
+      many_field: author
+      one_allowed_collections: null
+      one_collection: authors
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: books
+      sort_field: null
+    related_collection: authors
+    schema:
+      column: author
+      constraint_name: null
+      foreign_key_column: id
+      foreign_key_table: authors
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: books
+  - collection: reviews
+    field: book
+    meta:
+      junction_field: null
+      many_collection: reviews
+      many_field: book
+      one_allowed_collections: null
+      one_collection: books
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: reviews
+      sort_field: null
+    related_collection: books
+    schema:
+      column: book
+      constraint_name: null
+      foreign_key_column: id
+      foreign_key_table: books
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: reviews
+  - collection: reviews
+    field: forum
+    meta:
+      junction_field: null
+      many_collection: reviews
+      many_field: forum
+      one_allowed_collections: null
+      one_collection: forums
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: reviews
+      sort_field: null
+    related_collection: forums
+    schema:
+      column: forum
+      constraint_name: null
+      foreign_key_column: id
+      foreign_key_table: forums
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: reviews

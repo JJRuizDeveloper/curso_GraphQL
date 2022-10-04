@@ -1,0 +1,126 @@
+---
+layout: products/products_base.njk
+---
+<p class="content-center text-sm text-gray-600">{{ site[locale]._t.updated_on }}: {{ meta.update  | formatDate("DD", locale) }}, {{ site[locale]._t.by }}  {{ meta.author }}</p>
+
+{% if imageUrl %}
+<div class="w-auto">
+        <div class="h-64" style="background-image:
+            url('{{ imageUrl | url }}');
+        width:100%;
+        background-repeat: no-repeat;
+        background-position:center;
+        background-size: cover">&nbsp;</div>
+    {% if imageCredits %}
+<div class="text-xs text-gray-600">{{ imageCredits | safe }}</div>
+    {% endif %}
+</div>
+{% endif %}
+
+<div>
+    <div class="float-right ml-4 my-2 bg-indigo-100 p-2">
+        {% if meta.logo %}
+        {% set productLogUrl = '/images/products/' + meta.logo %}
+        <img src="{{ productLogUrl | url }}" class="h-7" />
+        {% endif %}
+        <h4>Product Brief</h4>
+        <table class="text-sm bg-white w-96">
+            <tbody>
+                <tr>
+                    <td class="w-40">Phase</td>
+                    <td>{{ product.phase }}</td>
+                </tr>
+                <tr>
+                    <td>Site</td>
+                    <td><a href="{{ links.homepage }}">Link</a></td>
+                </tr>
+                <tr>
+                    <td>Business Func</td>
+                    <td>{{ product.businessFunction }}</td>
+                </tr>
+                <tr>
+                    <td>Team Lead</td>
+                    <td>{{ product.teamLead }}</td>
+                </tr>
+                <tr>
+                    <td>Tech Lead</td>
+                    <td>{{ product.techLead }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>Links</h4>
+        <table class="text-sm bg-white w-96">
+            <tbody>
+                <tr>
+                    <td class="w-40">Repo</td>
+                    <td><a href="{{ links.repo }}">Link</a></td>
+                </tr>
+                <tr>
+                    <td>Env (Stage)</td>
+                    <td>{% if links.envs.stage %}<a href="{{ links.envs.stage }}">Link</a>{% endif %}</td>
+                </tr>
+                <tr>
+                    <td>Log Browser</td>
+                    <td>{% if links.logBrowser %}<a href="{{ links.logBrowser }}">Link</a>{% endif %}</td>
+                </tr>
+                <tr>
+                    <td>APM</td>
+                    <td>{% if links.observability.app %}<a href="{{ links.observability.app }}">Link</a>{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>Technical Brief</h4>
+        <table class="text-xs bg-white">
+            <tbody>
+                <tr>
+                    <td>Arch Drivers</td>
+                    <td>{{ technical.architecturalDrivers }}</td>
+                </tr>
+                <tr>
+                    <td>Cloud Provider</td>
+                    <td>{{ technical.cloudProvider }}</td>
+                </tr>
+                <tr>
+                    <td>Container Orch.</td>
+                    <td>{{ technical.containerOrchestrator }}</td>
+                </tr>
+                <tr>
+                    <td>Prog Langs</td>
+                    <td>{{ technical.progLanguages }}</td>
+                </tr>
+                <tr>
+                    <td>Tech Stack</td>
+                    <td>{{ technical.techStack }}</td>
+                </tr>
+                <tr>
+                    <td>Archi Styles</td>
+                    <td>{{ technical.archiStyles }}</td>
+                </tr>
+                <tr>
+                    <td>Shared Servs</td>
+                    <td>{{ technical.sharedServices }}</td>
+                </tr>
+                <tr>
+                    <td>CI / CD</td>
+                    <td>{{ technical.ci }} / {{ technical.cd }}</td>
+                </tr>
+                <tr>
+                    <td>Security</td>
+                    <td>{{ technical.security }}</td>
+                </tr>
+                <tr>
+                    <td>Observability</td>
+                    <td>{{ technical.observability }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>{{ content | safe }}</div>
+</div>
+
+<hr />
+<p class="content-center text-sm text-gray-600">{{ site[locale]._t.updated_on }}: {{ meta.update  | formatDate("DD", locale) }}, {{ site[locale]._t.by }}  {{ meta.author }}</p>
+{% if site.repoUrl %}
+<a class="text-sm" href="{{ site.repoUrl }}/edit/{{ site.repoDefaultBranch }}/{{page.inputPath}}">{{ site[locale]._t.edit_on_git }}</a>
+{% endif %}

@@ -1,0 +1,24 @@
+{
+  "name": "11r",
+  "description": "america's favorite eleventy blog template",
+  "url": "https://reeseschultz.github.io",
+  "baseUrl": "/11r/",
+  "author": {
+    "handle": "@ReeseCodes",
+    "name": "Reese Schultz"
+  },
+  "images": {
+    "twitter": "twitter.jpg",
+    "og": "og.jpg"
+  },
+  "feed": {
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://example.com/"
+  },
+  "jsonfeed": {
+    "filename": "feed.json",
+    "path": "/feed/feed.json",
+    "url": "https://example.com/feed/feed.json"
+  }
+}

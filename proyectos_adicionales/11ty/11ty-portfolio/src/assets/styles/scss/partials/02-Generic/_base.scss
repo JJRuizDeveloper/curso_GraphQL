@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+  margin: var(--space-0);
+  padding: var(--space-0);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: var(--yellow);
+  color: var(--body-font-color);
+}
+
+body {
+  width: 100vw;
+  background-color: var(--body-background);
+  color: var(--body-font-color);
+  font-family: var(--sans-font-family);
+  font-size: var(--body-font-size);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+p {
+  @extend %grid-column-center;
+
+  margin-bottom: var(--space-lg-1);
+
+  &:last-child {
+    margin-bottom: var(--space-0);
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+hr {
+  margin: var(--space-lg-2) var(--space-0);
+}
+
+article {
+  display: grid;
+  margin: var(--space-lg-3) var(--space-0);
+  grid-template-columns:
+    minmax(var(--space-lg-1), 1fr)
+    minmax(auto, var(--line-length))
+    minmax(var(--space-lg-1), 1fr);
+  overflow: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+picture {
+  display: block;
+}
+
+// Focus state as seen in: https://moderncss.dev/modern-css-upgrades-to-improve-accessibility/
+
+a {
+  color: var(--link-color);
+
+  &:visited {
+    color: var(--link-color-alt);
+  }
+}
+
+button {
+  border: none;
+  background: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+a,
+button {
+  &:focus {
+    outline: var(--border-width-medium) dashed var(--link-color-alt);
+    outline-offset: var(--space-sm-4);
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: var(--border-width-medium) dashed var(--link-color-alt);
+    outline-offset: var(--space-sm-4);
+  }
+}
+
+pre,
+code {
+  font-family: var(--mono-font-family);
+  line-height: 1.5;
+}
+
+pre {
+  margin: var(--space) var(--space-0);
+  padding: var(--space-lg-1);
+  background: var(--body-background); //For a better integration of Mermaid charts with body background.
+  font-size: var(--font-size-sm);
+  line-height: 1.375;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  direction: ltr;
+  word-break: normal;
+  tab-size: 2;
+  hyphens: none;
+}
+
+pre[class*="language-"] {
+  //Fix issue with pre inside columns breaking incorrectly
+  display: block;
+
+  //To avoid overflow in small devices
+  max-width: calc(100vw - var(--space-lg-3));
+  margin: var(--space-lg-1) var(--space-0);
+
+  //Fix issue with prism
+  padding: var(--space-lg-1);
+  background-color: var(--body-font-color);
+}

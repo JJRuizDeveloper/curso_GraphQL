@@ -1,0 +1,30 @@
+:root {
+  /* Brand Colors */
+  --color-primary: #222;
+  --color-secondary: #2f5bc2;
+
+  /* Background Colors */
+  --color-bg: #fff;
+  --color-bg-secondary: #f7f7f7;
+  --color-bg-accent: rgb(174, 182, 225);
+
+  /* Text and Border Colors */
+  --color-text: #222;
+  --color-text-alt: #fff;
+  --color-border: rgb(0 0 0 / 6%);
+
+  /* Status Colors */
+  --color-danger: #e03e3e;
+
+  /* Typography */
+  --font-family-base: -apple-system, blinkmacsystemfont, 'Segoe UI', roboto,
+    'Helvetica Neue', arial, 'Noto Sans', sans-serif;
+  --font-family-heading: var(--font-family-base);
+
+  /* Sizes */
+  --site-width: 850px;
+
+  /* Other */
+  --border-radius: 12px;
+  --border-radius-sm: 5px;
+}

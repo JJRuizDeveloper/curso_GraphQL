@@ -1,0 +1,141 @@
+// -----------------------------------------------------------------------------
+// Settings: CSS variables for fonts, colours, etc.
+// -----------------------------------------------------------------------------
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+/// Media queries breakpoints
+/// 36rem * 16px = 576px
+/// 48rem * 16px = 768px
+/// 60rem * 16px = 960px;
+/// 62rem * 16px = 992px; not in use yet
+/// 64rem * 16px = 1024px;
+/// 80rem * 16px = 1280px;
+$breakpoints: (
+  "xs": 36em,
+  "sm": 48em,
+  "md": 60em,
+  "lg": 64em,
+  "xl": 80em,
+) !default;
+
+// Palette generated with -->
+// https://www.tailwindshades.com/#color=919191&step-up=10&step-down=10&name=silver
+// https://toolness.github.io/accessible-color-matrix/
+$colours: (
+  "white": hsl(0deg, 0%, 100%),
+  "grey-100": hsl(0deg, 0%, 97%),
+  "grey-200": hsl(0deg, 0%, 87%),
+  "grey-300": hsl(0deg, 0%, 77%),
+  "grey-400": hsl(0deg, 0%, 67%),
+  "grey-500": hsl(0deg, 0%, 57%),
+  "grey-600": hsl(0deg, 0%, 47%),
+  "grey-700": hsl(0deg, 0%, 37%),
+  "grey-800": hsl(0deg, 0%, 27%),
+  "grey-900": hsl(0deg, 0%, 17%),
+  "black": hsl(0deg, 0%, 0%),
+  "black-50-a": hsla(0deg, 0%, 0%, 0.05),
+  "black-100-a": hsla(0deg, 0%, 0%, 0.1),
+  "white-400-a": hsla(0deg, 0%, 100%, 0.4),
+  "white-700-a": hsla(0deg, 0%, 100%, 0.7),
+  "white-850-a": hsla(0deg, 0%, 100%, 0.85),
+  "purple": hsl(300deg, 100%, 25%),
+  "blue": hsl(240deg, 100%, 50%),
+  "yellow": hsl(49deg, 99%, 70%),
+  "skyblue": hsl(197deg, 71%, 73%)
+);
+
+:root {
+  @each $name, $color in $colours {
+    --#{$name}: #{$color};
+  }
+
+  // Font size: Major third scale --> https://www.modularscale.com/?1&em&1.25
+  --font-size-xs: 0.75rem; //12px
+  --font-size-sm: 0.875rem; //14px
+  --font-size-base: 1rem; //16px
+  --font-size-md: 1.125rem; //18px
+  --font-size-lg: 1.25rem; //20px
+  --font-size-xl: 1.563rem; //25px
+  --font-size-2xl: 1.953rem; //31px
+  --font-size-h2: 2.441rem; //39px
+  --font-size-h1: 3.052rem; //48px
+
+  // Theme
+  --body-background: var(--white);
+  --body-font-color: var(--grey-900);
+  --body-font-color-alt: var(--white);
+  --body-font-size: var(--font-size-md);
+  --heading-font-color: var(--grey-800);
+  --card-background: var(--white-850-a);
+  --footer-background: var(--grey-200);
+  --text-muted: var(--grey-700);
+  --link-color: var(--blue);
+  --link-color-alt: var(--purple);
+  --footer-color: var(--grey-800);
+
+  // Sans System fonts explanation:
+  // The browser looks for each successive font, preferring the first one if // possible, and falls back to the next if it cannot find the font (on the // system or defined in CSS).
+  // 1. -apple-system is San Francisco, used on ios and macos (not Chrome however)
+  // 2. BlinkMacSystemFont is San Francisco, used on macOS Chrome
+  // 3. Segoe UI is used on Windows 10
+  // 4. Roboto is used on Android
+  // 5. Oxygen-Sans is used on Linux with KDE
+  // 6. Ubuntu is used on Ubuntu (all variants)
+  // 7. Cantarell is used on Linux with GNOME Shell
+  // 8. "Helvetica Neue" and Helvetica is used on macOS 10.10 and below (wrapped // in quotes because it has a space)
+  // 9. Arial is a font widely supported by all operating systems
+  // 10. sans-serif is the fallback sans-serif font if none of the other fonts are supported
+
+  // More about system fonts can be read here:
+  // https://iainbean.com/posts/2021/system-fonts-dont-have-to-be-ugly/
+  // https://practicaltypography.com/system-fonts.html
+  // https://readium.org/readium-css/docs/CSS09-default_fonts.html
+  // https://gist.github.com/ygoex/a7b8e3ccedbdf9897bad677aaff49290
+
+  --sans-font-family: -apple-system, blinkmacsystemfont, segoe ui, roboto, oxygen-sans, ubuntu, cantarell, "Helvetica Neue", helvetica, arial, sans-serif, apple color emoji, segoe ui emoji, cursive;
+  --serif-font-family: constantia, "Lucida Bright", lucidabright, "Lucida Serif", lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", georgia, serif;
+  --mono-font-family: "Source Code Pro", menlo, monaco, consolas, "Liberation Mono", "Courier New", monospace;
+
+  // Border
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 3px;
+  --border-radius-sm: 0.25rem;
+  --border-radius-default: 1.25rem;
+  --border-radius-circle: 50%;
+
+  // Spacing: small
+  --space-sm-8n: -0.5rem; //-8px
+  --space-sm-4n: -0.25rem; //-4px
+  --space-sm-2n: -0.125rem; //-2px
+  --space-0: 0;
+  --space: 0.025rem; //~0.5px
+  --space-sm-1: 0.06rem; //1px
+  --space-sm-2: 0.125rem; //2px
+  --space-sm-4: 0.25rem; //4px
+  --space-sm-6: 0.375rem; //6px
+  --space-sm-8: 0.5rem; //8px
+  --space-sm-10: 0.625rem; //10px
+  --space-sm-12: 0.75rem; //12px
+  --space-sm-14: 0.875rem; //14px
+
+  // Spacing: large
+  --space-lg-1n: -1rem; //-16px
+  --space-lg-1: 1rem; //16px
+  --space-lg-1h: 1.5rem; //24px
+  --space-lg-2: 2rem; //32px
+  --space-lg-3: 3rem; //48px
+  --space-lg-4: 4rem; //64px
+  --space-lg-5: 5rem; //80px
+  --transition-default: all 0.2s ease;
+
+  // Width
+  // More about ch unit --> https://drafts.csswg.org/css-values-3/#ch
+  // More about line-length --> https://kickpoint.ca/the-readability-formula-making-your-website-easy-to-read/
+  --line-length: 57ch;
+  --w-breakpoint-xs: 36rem;
+  --w-breakpoint-sm: 48rem;
+  --w-breakpoint-md: 60rem;
+}

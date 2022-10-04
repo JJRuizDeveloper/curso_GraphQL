@@ -1,0 +1,110 @@
+{% extends 'layouts/base.njk' %}
+
+{% if templateClass is not defined %}
+  {% set templateClass = 'tmpl-post' %}
+{% endif %}
+
+{% block content %}
+  <article class="post grid">
+
+    <header class="post__header {%- if imgUrl %} mb-2 mb-lg-3{% endif %}">
+      {%- if date %}
+        <div class="post__date-time mb-1">
+          <time class="post__date text-muted font-sm" datetime="{{ date | dateStringISO }}">
+            <span class="text-black">Published:</span>
+            {{ date | dateFilter }}</time>
+          <span class="font-bold" aria-hidden="true">&middot;</span>
+          <span class="post__time text-muted font-sm">
+            <span class="text-black">Read time:</span> About {{ content | readingTime }}</span>
+        </div>
+      {% endif %}
+
+      <h1 class="post__title">{{ title }}</h1>
+
+      {%- if subtitle %}
+        <h2 class="post__subtitle">{{ subtitle }}</h2>
+      {% endif %}
+
+      {%- if tags %}
+        {# https://stackoverflow.com/questions/66261187/11ty-how-to-display-post-tags-in-my-post-njk-file #}
+        <ul class="tag__items display-flex">
+          {% for tag in tags -%}
+            {% if tag !== 'posts' %}
+              {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+              <li class="tag__item">
+                <a class="tag__link" href="{{ tagUrl | url }}">#{{ tag }}</a>
+              </li>
+            {% endif %}
+          {%- endfor %}
+        </ul>
+      {% endif %}
+    </header>
+
+    {%- if imgUrl %}
+      {% imageNjk imgUrl,
+      imgAlt,
+      imgSize,
+      pictureClass,
+      imgClass,
+      imgBorderColor %}
+    {% else %}
+      <hr>
+    {% endif %}
+
+    <div class="post__content columns-2">
+      {{ content | safe }}
+    </div>
+
+    <footer class="post__footer">
+      <hr>
+      <ul class="post__next-prev">
+        {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
+        {%- if nextPost %}
+          <li class="post__next">
+            <span class="post__next--label">
+              {{ component('svg-icon', {
+                svgWidth: 24,
+                svgHeight: 24,
+                svgClass: "post__next--icon",
+                symbolId: "icon-chevron-left",
+                screenReader: "Chevron left"
+              }) }}
+              Next
+            </span>
+            <a class="post__next--link" href="{{ nextPost.url | url }}">
+              {{ nextPost.data.title }}
+            </a>
+          </li>
+        {% endif %}
+        {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+        {%- if previousPost %}
+          <li class="post__prev{%- if not nextPost %} ml-md-auto{% endif %}">
+            <span class="post__prev--label">
+              Previous
+              {{ component('svg-icon', {
+                svgWidth: 24,
+                svgHeight: 24,
+                svgClass: "post__prev--icon",
+                symbolId: "icon-chevron-right",
+                screenReader: "Chevron right"
+              }) }}
+            </span>
+            <a class="post__prev--link" href="{{ previousPost.url | url }}">
+              {{ previousPost.data.title }}
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </footer>
+
+  </article>
+{% endblock %}
+
+{% block js %}
+  {% if page.url === '/posts/mermaid_test/' %}
+    <script src="{{ '/assets/scripts/vendors/mermaid.min.js' | url }}"></script>
+    <script>
+      mermaid.initialize({startOnLoad: true});
+    </script>
+  {% endif %}
+{% endblock %}

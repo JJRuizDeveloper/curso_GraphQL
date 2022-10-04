@@ -1,0 +1,104 @@
+//Needs to be imported before buttons to keep specificity low
+.menu__items {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: var(--space-lg-1h);
+  padding: var(--space-0) var(--space-lg-1h);
+  list-style: none;
+
+  // https://pineco.de/get-to-know-the-lobotomized-owl-selector/
+  & > * + * {
+    margin-left: var(--space-sm-12);
+
+    @include media-query(md) {
+      margin-left: var(--space-lg-2);
+    }
+  }
+
+  @include media-query(xs) {
+    margin-bottom: var(--space-0);
+  }
+}
+
+.menu__item {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  letter-spacing: var(--space-sm-1);
+  text-transform: uppercase;
+}
+
+.menu__link {
+  position: relative;
+  transition: var(--transition-default);
+  color: var(--body-font-color);
+  text-decoration: none;
+
+  &::after {
+    position: absolute;
+    bottom: 40%;
+    left: var(--space-sm-2n);
+    width: var(--space-0);
+    height: var(--space-sm-2);
+    transition: var(--transition-default);
+    background: var(--body-font-color);
+    content: "";
+    z-index: -1;
+  }
+
+  &:hover::after {
+    width: calc(100% + var(--space-sm-4));
+  }
+
+  &:visited {
+    color: var(--body-font-color);
+  }
+}
+
+.menu__item--active {
+  a {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      bottom: 42%;
+      left: var(--space-sm-2n);
+      width: calc(100% + var(--space-sm-4));
+      height: var(--space-sm-2);
+      transition: var(--transition-default);
+      background: var(--body-font-color);
+      content: "";
+      z-index: -1;
+    }
+  }
+}
+
+.toggle__theme--wrap {
+  display: flex;
+  position: absolute;
+  top: var(--space-lg-2);
+  right: var(--space-sm-8);
+  align-items: center;
+
+  @include media-query(xs) {
+    position: initial;
+    margin-top: var(--space-sm-4);
+  }
+
+  &:hover {
+    .toggle__theme--svg {
+      fill: var(--grey-500);
+    }
+  }
+}
+
+.toggle__theme--btn {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.toggle__theme--svg {
+  transition: var(--transition-default);
+  fill: var(--body-font-color);
+}

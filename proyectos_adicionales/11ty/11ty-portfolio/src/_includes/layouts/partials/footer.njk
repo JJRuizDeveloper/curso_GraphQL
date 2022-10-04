@@ -1,0 +1,111 @@
+<footer class="footer grid mb-0">
+  <div class="footer__top">
+    <div class="footer__top-left mb-1">
+      <a class="footer__logo home" href="{{ '/' | url }}">{{ metadata.title }}</a>
+      <p>{{ metadata.title }} is maintained by <a class="footer__link" href="{{ metadata.author.github }}">{{ metadata.author.name }}</a> as a quick start for some of her projects, but happy to share it for anyone that might find it useful. Check <a class="footer__link" href="{{ metadata.repo }}">the repo</a> on GitHub.</p>
+      <p>This page was generated on {% today %}</p>
+    </div>
+    <div class="footer__top-right">
+      <div class="footer__quick-links-wrapper">
+        <p class="h6 mb-0-5">Quick links</p>
+        <ul class="footer__quick-link-items">
+          <li class="footer__quick-link-item">
+            <a class="footer__link" href="{{ '/' | url }}">Home</a>
+          </li>
+          <li class="footer__quick-link-item">
+            <a class="footer__link" href="{{ '/posts' | url }}">Blog</a>
+          </li>
+          <li class="footer__quick-link-item">
+            <a class="footer__link" href="{{ '/about' | url }}">About</a>
+          </li>
+          <li class="footer__quick-link-item">
+            <a class="footer__link" href="mailto:{{ metadata.author.email }}">Contact</a>
+          </li>
+          <li class="footer__quick-link-item">
+            <a class="footer__link" href="{{ '/sitemap' | url }}">Sitemap</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__contact-follow-wrapper">
+        <div class="footer__contact">
+          <p class="h6 text-bold mb-0-5">Contact me</p>
+          <a class="footer__link" href="mailto:{{ metadata.author.email }}">
+            {{ metadata.author.email }}</a>
+        </div>
+        <div class="footer__follow">
+          <p class="h6 text-bold mb-0-5">Follow me</p>
+          <nav>
+            <ul class="footer__social-items">
+              <li class="footer__social-item">
+                <a class="footer__social-link" href="{{ metadata.author.twitter }}">
+                  {{ component('svg-icon', {
+                    svgWidth: 20,
+                    svgHeight: 20,
+                    symbolId: "icon-social-twitter",
+                    screenReader: "Follow me on Twitter"
+                  }) }}
+                </a>
+              </li>
+              <li class="footer__social-item">
+                <a class="footer__social-link" href="{{ metadata.author.codepen }}">
+                  {{ component('svg-icon', {
+                    svgWidth: 21,
+                    svgHeight: 21,
+                    symbolId: "icon-social-codepen",
+                    screenReader: "Follow me on Codepen"
+                  }) }}
+                </a>
+              </li>
+              <li class="footer__social-item">
+                <a class="footer__social-link" href="{{ metadata.author.dribbble }}">
+                  {{ component('svg-icon', {
+                    svgWidth: 20,
+                    svgHeight: 20,
+                    symbolId: "icon-social-dribbble",
+                    screenReader: "Follow me on Dribbble"
+                  }) }}
+                </a>
+              </li>
+              {# <li class="footer__social-item">
+                <a class="footer__social-link" href="{{ metadata.author.behance }}">
+                  {{ component('svg-icon', {
+                    svgWidth: 20,
+                    svgHeight: 20,
+                    symbolId: "icon-social-behance",
+                    screenReader: "Follow me on Behance"
+                  }) }}
+                </a>
+              </li> #}
+              <li class="footer__social-item">
+                <a class="footer__social-link" href="{{ metadata.author.linkedin }}">
+                  {{ component('svg-icon', {
+                    svgWidth: 20,
+                    svgHeight: 20,
+                    symbolId: "icon-social-linkedin",
+                    screenReader: "Follow me on LinkedIn"
+                  }) }}
+                </a>
+              </li>
+              <li class="footer__social-item">
+                <a class="footer__social-link" href="{{ metadata.feed.path | url }}">
+                  {{ component('svg-icon', {
+                    svgWidth: 18,
+                    svgHeight: 22,
+                    symbolId: "icon-social-rss",
+                    screenReader: "Subscribe to my feed."
+                  }) }}
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="footer__copyright">&copy; {% year %}
+    <a class="footer__link" href="{{ metadata.author.github }}">
+      Ygoex</a> - Powered by <a class="footer__link" href="https://11ty.io">
+      Eleventy</a> and <a class="footer__link" href="https://www.netlify.com">
+      Netlify</a>
+  </p>
+</footer>

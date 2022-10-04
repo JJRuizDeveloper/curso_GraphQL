@@ -1,0 +1,24 @@
+.tmpl-home {
+  min-height: calc(100vh - 92px - 6rem - 55px);
+
+  > :first-child {
+    margin-bottom: var(--space-lg-3);
+  }
+
+  p {
+    max-width: var(--line-length);
+  }
+}
+
+.gradient-home {
+  background-image: url("/assets/images/mesh-gradient-white.webp");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/*! purgecss ignore */
+.no-webp .gradient-home {
+  background-image: url("/assets/images/mesh-gradient-white.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}

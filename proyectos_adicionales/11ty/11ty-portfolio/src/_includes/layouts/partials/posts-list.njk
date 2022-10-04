@@ -1,0 +1,12 @@
+{%- from "layouts/partials/component.njk" import component -%}
+
+<ul class="postlist test">
+  {% for post in postslist %}
+    <li class="postlist__item post-card">
+      {{ component('post-card', {
+        post: post,
+        tagList: collections.tagList
+      }) }}
+    </li>
+  {% endfor %}
+</ul>

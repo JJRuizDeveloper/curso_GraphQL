@@ -1,0 +1,16 @@
+---
+title: Welcome
+---
+
+{% extends 'layouts/base.njk' %}
+
+{% if templateClass is not defined %}
+  {% set templateClass = 'tmpl-home grid ' + page.fileSlug %}
+{% endif %}
+
+{% block content %}
+  {% if title %}
+    <h1>{{ title }}</h1>
+  {% endif %}
+  {{ content | safe }}
+{% endblock %}

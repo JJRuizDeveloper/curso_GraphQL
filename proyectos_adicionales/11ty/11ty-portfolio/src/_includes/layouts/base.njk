@@ -1,0 +1,33 @@
+{%- from "layouts/partials/component.njk" import component -%}
+
+<!doctype html>
+<html lang="en">
+  {% include 'layouts/partials/head.njk' %}
+  <body {% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+
+    <a class="skip-link btn btn-lg font-sm" href="#main-content">Skip to content</a>
+
+    {% include 'layouts/partials/header.njk' %}
+
+    <main id="main-content" {% if templateClass %} class="{{ templateClass }} {{ pageClass }}"{% endif %}>
+      {% block content %}
+        Content comes here!
+      {% endblock %}
+    </main>
+
+    {% include 'layouts/partials/footer.njk' %}
+
+    {% include 'layouts/partials/svgs.njk' %}
+
+    <!-- Current page: {{ page.url | url }} -->
+
+    {% if page.url === '/' %}
+      <script src="{{ '/assets/scripts/vendors/modernizr.min.js' | url }}"></script>
+    {% endif %}
+
+    <script src="{% if yetty.environment === 'production' %}{{ '/assets/scripts/bundle.min.js' | url | cacheBuster }}{% else %}{{ '/assets/scripts/index.js' | url | cacheBuster }}{% endif %}"></script>
+
+    {% block js %}{% endblock %}
+
+  </body>
+</html>

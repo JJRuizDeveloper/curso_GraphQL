@@ -1,0 +1,28 @@
+{
+  "title": "Yetty",
+  "url": "https://yetty.netlify.app",
+  "description": "Yet another Eleventy starter kit for my (& your) new projects with accessibility and performance in mind.",
+  "repo": "https://github.com/ygoex/yetty",
+  "feed": {
+    "subtitle": "Yet another Eleventy starter kit for my (& your) new projects with accessibility and performance in mind.",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://yetty.netlify.app/"
+  },
+  "jsonfeed": {
+    "path": "/feed/feed.json",
+    "url": "https://yetty.netlify.app/feed/feed.json"
+  },
+  "author": {
+    "name": "Yolanda Gorriz Exposito",
+    "email": "helloygoex@gmail.com",
+    "username": "ygoex",
+    "url": "https://yetty.netlify.app/about-me/",
+    "github": "https://github.com/ygoex",
+    "twitter": "https://twitter.com/ygoex",
+    "codepen": "https://codepen.io/ygoex",
+    "dribbble": "https://dribbble.com/ygoex",
+    "behance": "https://www.behance.net/ygoex",
+    "linkedin": "https://www.linkedin.com/in/ygoex/"
+  }
+}

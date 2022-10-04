@@ -1,0 +1,75 @@
+%img {
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+%grid {
+  display: grid;
+  margin: var(--space-lg-3) var(--space-0);
+  grid-template-columns:
+    minmax(var(--space-lg-1h), 1fr)
+    minmax(auto, var(--w-breakpoint-xs))
+    minmax(var(--space-lg-1h), 1fr);
+  overflow: hidden;
+
+  @include media-query(sm) {
+    margin: var(--space-lg-3) var(--space-0) var(--space-lg-5);
+    grid-template-columns:
+      minmax(var(--space-lg-1h), 1fr)
+      minmax(auto, var(--w-breakpoint-sm))
+      minmax(var(--space-lg-1h), 1fr);
+  }
+
+  @include media-query(lg) {
+    grid-template-columns:
+      minmax(var(--space-lg-1h), 1fr)
+      minmax(auto, var(--w-breakpoint-md))
+      minmax(var(--space-lg-1h), 1fr);
+  }
+}
+
+%grid-column-center {
+  grid-column: 2 / auto;
+}
+
+%grid-column-full {
+  grid-column: 1 / 4;
+}
+
+%underline-dashed {
+  transition: var(--transition-default);
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: var(--space-sm-1);
+  text-underline-offset: var(--space-sm-2);
+
+  &:hover {
+    text-decoration-style: solid;
+  }
+}
+
+%gradient-polka {
+  background-color: var(--white);
+  background-image: radial-gradient(var(--grey-300) 1px, var(--white) 1px);
+  background-size: 7px 7px;
+  opacity: 0.8;
+}
+
+%gradient-diagonal {
+  background-color: var(--white);
+  background-image: repeating-linear-gradient(135deg, var(--grey-300) 0, var(--grey-300) 1px, var(--white) 0, var(--white) 50%);
+  background-size: 15px 15px;
+  opacity: 0.8;
+}
+
+%gradient-topography {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)), url("/assets/images/topography.svg"), url("/assets/images/mesh-gradient-white.jpg");
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)), url("/assets/images/topography.svg"), url("/assets/images/mesh-gradient-white.webp");
+  background-repeat: no-repeat, repeat;
+  background-size: cover, 700px 700px;
+}
+
+%gradient-abstract {
+  background: radial-gradient(circle at 35% 25%, #f9c10685 0%, transparent 30%) no-repeat, radial-gradient(circle at 70% 50%, #bd88e080 0%, transparent 30%) no-repeat, radial-gradient(circle at 60% 30%, #c2768975 0%, transparent 30%) no-repeat;
+}

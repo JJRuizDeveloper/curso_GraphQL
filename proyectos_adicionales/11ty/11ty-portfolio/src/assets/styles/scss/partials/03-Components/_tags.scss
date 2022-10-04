@@ -1,0 +1,43 @@
+.tags {
+  grid-template-rows: min-content;
+}
+
+// https://pineco.de/get-to-know-the-lobotomized-owl-selector/
+.tag__items > * + *,
+.post-card__tags > * + * {
+  margin-left: var(--space-sm-6);
+}
+
+.tag__items {
+  align-content: flex-start;
+}
+
+.tag__item {
+  margin-bottom: var(--space-sm-6);
+}
+
+.tag__link,
+.post-card__tag {
+  display: inline-block;
+  padding: var(--space-sm-1) var(--space-sm-8);
+  transition: var(--transition-default);
+  border: var(--border-width-thin) solid var(--body-font-color);
+  border-radius: var(--border-radius-default);
+  color: var(--body-font-color);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  vertical-align: text-top;
+
+  &:visited {
+    color: var(--body-font-color);
+  }
+
+  &:hover {
+    border-color: var(--link-color);
+    color: var(--link-color);
+  }
+}
+
+.post-card__tag {
+  font-size: var(--font-size-xs); //12px
+}

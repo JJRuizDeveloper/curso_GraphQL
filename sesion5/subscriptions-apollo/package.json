@@ -1,0 +1,22 @@
+{
+  "name": "08_subscriptions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@graphql-tools/schema": "^9.0.4",
+    "apollo-server": "^3.10.2",
+    "graphql": "^16.6.0",
+    "graphql-subscriptions": "^2.0.0",
+    "mongoose": "^6.6.4",
+    "nodemon": "^2.0.20",
+    "subscriptions-transport-ws": "^0.11.0"
+  }
+}
